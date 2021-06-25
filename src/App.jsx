@@ -1,11 +1,11 @@
-import SampleComponent from './components/SampleComponent';
+import { useSelector } from 'react-redux';
+import FormLogin from './components/FormLogin';
+import Welcome from './components/Welcome';
 
 function App() {
-  return (
-    <div className="App">
-      <SampleComponent />
-    </div>
-  );
+  const user = useSelector((state) => state.user);
+
+  return <div className="App">{user?.id ? <Welcome /> : <FormLogin />}</div>;
 }
 
 export default App;
