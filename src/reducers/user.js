@@ -7,11 +7,12 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  if (action.type === 'USER_LOGIN') {
-    return { ...state, ...action.user };
+  switch (action.type) {
+    case 'USER_LOGIN':
+      return { ...state, ...action.user };
+    case 'USER_LOGOUT':
+      return initialState;
+    default:
+      return state;
   }
-  if (action.type === 'USER_LOGOUT') {
-    return initialState;
-  }
-  return state;
 };
